@@ -37,8 +37,9 @@ var getTracks = function(artist, resultSelector) {
       q_artist: artist
     },
     function(data) {
-      if ( !data.message.body.track_list[0].track ) {
+      if ( !(data.message.body.track_list[0] && data.message.body.track_list[0].track) ) {
         $("body").removeClass().addClass("not-found");
+        $("div.not-found h3 span").text("\'" + artist + "\'");
       } else {
         $(".results ." + resultSelector + " .name").
           text(data.message.body.track_list[0].track.artist_name);
@@ -135,6 +136,18 @@ $(document).ready( function() {
           return( $('.start input.' + selector).val() )
         })
       );
+    });
+
+    // Inputs submit-on-enter
+    $.each(RESULT_SELECTORS, function(i, selector) {
+      $(".start input." + selector).keypress( function(e) {
+        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('#submit').click();
+            return false;
+        } else {
+            return true;
+        }
+      });
     });
 
     // Reset
