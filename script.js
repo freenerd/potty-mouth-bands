@@ -18,11 +18,13 @@ const EXAMPLES = [
 var lyrics;
 var counter;
 var numberOfTracks;
+var output;
 
 var initGlobals = function() {
   lyrics = {};
   counter = {};
   numberOfTracks = {};
+  output = {};
 }
 
 //
@@ -97,12 +99,17 @@ var getSentiment = function(lyrics, resultSelector) {
       );
 
       // Output
+      output[resultSelector] = averageSentiment;
 
-      $(".results ." + resultSelector + " .sentiment")
-        .find("p").text(averageSentiment).end()
-        .show();
+      if ( output.length >= RESULT_SELECTORS.length ) {
+        $.each(output, function(resultSelector, averageSentiment) {
+          $(".results ." + resultSelector + " .sentiment")
+            .find("p").text(averageSentiment).end()
+            .show();
+        });
+      }
     }
-  ); 
+  );
 };
 
 //
