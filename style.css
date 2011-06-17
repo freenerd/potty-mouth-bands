@@ -156,10 +156,17 @@ html {
 }
 
 h1 {
-  font-size: 18px;  
+  font-size: 28px;  
   margin: 0.5em 0;
   text-align: center;
 }
+
+h2 {
+  font-size: 20px;  
+  margin: 0.5em 0;
+  text-align: center;
+}
+
 
 #page {
   width: 680px;
@@ -168,6 +175,7 @@ h1 {
 }
 
 #content {
+  padding: 10px;
   background: white;
   border-radius: 10px;
 }
@@ -179,22 +187,61 @@ h1 {
   line-height: 24px;
 }
 
-#content .artist-a,
-#content .artist-b {
-  border: 1px solid #ddd;
-  background: #ddd;
+#content input.artist-a,
+#content input.artist-b {
+  border: none;
+  color: black;
+  background: #eee;
   font-size: 20px;
   line-height: 38px;
   width: 200px;
   display: inline-block;
-  margin: 0 0 10px 0;
+  margin: 0 10px 20px 10px;
   padding: 0 5px;
 }
 
-#content .start #submit {
+#content input.artist-a {
+  background: pink;
+}
+
+#content input.artist-b {
+  background: turquoise;
+}
+
+#content .start #submit,
+#content .results .start {
   display: block;
-  width: 100px;
-  margin: 0 auto;
+  margin: 10px auto;
+  width: 200px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  padding: 10px 20px;
+  background: -moz-linear-gradient(
+    top,
+    #6b6b6b 0%,
+    #000000);
+  background: -webkit-gradient(
+    linear, left top, left bottom, 
+    from(#6b6b6b),
+    to(#000000));
+  border-radius: 30px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border: 1px solid #000000;
+  -moz-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+  -webkit-box-shadow:
+    0px 1px 3px rgba(000,000,000,0.5),
+    inset 0px 0px 1px rgba(255,255,255,0.7);
+  text-shadow:
+    0px -1px 0px rgba(000,000,000,0.4),
+    0px 1px 0px rgba(255,255,255,0.3);
+}
+
+#content .start .examples:before {
+  content: "Or try:";
 }
 
 #content .start .examples {
@@ -202,11 +249,24 @@ h1 {
   font-size: 12px;
   line-height: 16px;
   text-align: left;
+  margin: 20px 0;
+  padding: 0;
+  text-align: center;
 }
 
 #content .start .examples li {
   margin: 0;
   padding: 0;
+}
+
+#content .start .examples li a {
+  text-decoration: none;
+  color: #999;
+}
+
+#footer {
+  padding: 10px;
+  text-align: right;
 }
 
 div.results, div.start, div.not-found, div.templates {
@@ -218,17 +278,32 @@ body.start div.start, body.results div.results, body.not-found div.not-found{
 }
 
 div.bar-wrapper {
-  height: 0px;
+  height: 400px;
+  width: 200px;
+  display: block;
+  float: left;
+  position: relative;
 }
 
 div.bar {
   background-color: red;
+  height: 1px;
+  width: 100%;
+  position: absolute;
+  bottom: 1px;
 }
 
+.results .artist-a div.bar {
+  background: pink;
+}
+
+.results .artist-b div.bar {
+  background: turquoise;
+}
+
+
 div.displays {
-  text-align: center;
-  height: 600px;
-  position: relative;
+  padding-left: 140px;
 }
 
 

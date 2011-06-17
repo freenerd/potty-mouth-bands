@@ -105,8 +105,7 @@ var getSentiment = function(lyrics, resultSelector) {
       if ( output.length >= RESULT_SELECTORS.length ) {
         $('body').removeClass().addClass('results');
         $.each(output, function(i, element) {
-          $(".results ." + element[0] + " .bar")
-            .animate( { height: ((element[1] * 100).toString() + "px") }, 500)
+          $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 500)
         });
       }
     }
