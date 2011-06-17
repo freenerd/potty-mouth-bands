@@ -205,7 +205,12 @@ $(document).ready( function() {
       $(".templates .example-element")
         .clone()
         .find("a").text( example.join(" vs. ") )
-        .click(function() { start( example ) } ).end()
+        .click(function() {
+          $.each(RESULT_SELECTORS, function(i, selector) {
+            $('.start input.' + selector).val(example[i]);
+          });
+          start( example ) 
+        }).end()
         .appendTo("div.start ul.examples");
     });
   }
