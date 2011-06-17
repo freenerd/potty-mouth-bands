@@ -6,6 +6,7 @@ const musicMetricApiKey = '71a1c2c497fa11e09d5600163e499d92';
 
 const MAX_NUMBER_OF_TRACKS = 10;
 const RESULT_SELECTORS = ["artist-a", "artist-b"];
+const DEFAULT_INPUTS = ["Justin Bieber", "Rebecca Black"];
 const EXAMPLES = [
         ["Hammerfall", "Metallica"],
         ["Britney Spears", "Lady Gaga"],
@@ -24,7 +25,7 @@ var initGlobals = function() {
   lyrics = {};
   counter = {};
   numberOfTracks = {};
-  output = {};
+  output = [];
 }
 
 //
@@ -99,12 +100,12 @@ var getSentiment = function(lyrics, resultSelector) {
       );
 
       // Output
-      output[resultSelector] = averageSentiment;
+      output.push([ resultSelector, averageSentiment ] );
 
       if ( output.length >= RESULT_SELECTORS.length ) {
-        $.each(output, function(resultSelector, averageSentiment) {
-          $(".results ." + resultSelector + " .sentiment")
-            .find("p").text(averageSentiment).end()
+        $.each(output, function(i, element) {
+          $(".results ." + element[0] + " .sentiment")
+            .find("p").text(element[1]).end()
             .show();
         });
       }
@@ -154,6 +155,22 @@ $(document).ready( function() {
         } else {
             return true;
         }
+      });
+    });
+
+    // Inputs smart defaults
+    $.each(RESULT_SELECTORS, function(i, selector) {
+      $(".start input." + selector).focus(function() {
+        // TODO This no worky
+        if ( $.inArray(DEFAULT_INPUTS, $(this).val().toString()) != -1 ) {
+          $(this).value('');
+        };
+      });
+
+      $(".start input." + selector).blur(function() {
+        if( $(this).val() == '' ) {
+          $(this).val(DEFAULT_INPUTS[i]);
+        };
       });
     });
 
