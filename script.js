@@ -120,7 +120,7 @@ var getSentiment = function(lyrics, resultSelector) {
 
       $("div.results h2.winner")
         .text("Wow, " + $(".results ." + winner[0] + " .name").text() + " has a potty mouth!")
-        .delay(2000)
+        .delay(1000)
         .fadeIn(2000);
     }
   );
