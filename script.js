@@ -103,6 +103,7 @@ var getSentiment = function(lyrics, resultSelector) {
       output.push([ resultSelector, averageSentiment ] );
 
       if ( output.length >= RESULT_SELECTORS.length ) {
+        $('body').removeClass().addClass('results');
         $.each(output, function(i, element) {
           $(".results ." + element[0] + " .bar")
             .animate( { height: ((element[1] * 100).toString() + "px") }, 500)
@@ -121,6 +122,11 @@ var start = function(artists) {
   // Output
   $(".results .displays").html("");
   $.each(RESULT_SELECTORS, function(i, selector) {
+
+    $("#submit")
+      .text(".")
+      .waitingDots("waiting", 4, function(e) {});
+
     $(".templates .result")
       .clone()
       .appendTo(".results .displays")
@@ -128,8 +134,6 @@ var start = function(artists) {
 
     getTracks(artists[i], selector);
   });
-
-  $('body').removeClass().addClass('results');
 };
 
 //
