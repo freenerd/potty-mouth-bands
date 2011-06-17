@@ -6,37 +6,49 @@
     <link rel="stylesheet" href="style.css" type="text/css" />
   </head>
 
-  <body class="start">
-    <div class="start">
-      <input class="artist-a" value="Prince">
-      <input class="artist-b" value="Madonna">
-      <input type="submit" id="submit">
+  <body id="page" class="start">
 
-      <ul class="examples"></ul>
+    <div id="header">
+      <h1>Potty Bands</h1>
     </div>
 
-    <div class="results">
-      <div class="displays"></div>
-      <input type="submit" class="start" value="Try another pair">
-    </div>
+    <div id="content">
 
-    <div class="not-found">
-      <h3>Oh no, artist was not found</h3>
-      <input type="submit" class="start" value="Try another pair">
-    </div>
-
-    <div class="templates">
-      <div class="result">
-        <h1 class="name"></h1>
-        <div class="sentiment">
-          <label>Sentiment:</label>
-          <p></p>
-        </div>
+      <div class="results">
+        <div class="displays"></div>
+        <input type="submit" class="start" value="Try another pair">
       </div>
 
-      <li class="example-element">
-        <a href="#"></a>
-      </li>
+      <div class="not-found">
+        <h3>Oh no, artist was not found</h3>
+        <input type="submit" class="start" value="Try another pair">
+      </div>
+
+      <div class="templates">
+        <div class="result">
+          <h1 class="name"></h1>
+          <div class="sentiment">
+            <label>Sentiment:</label>
+            <p></p>
+          </div>
+        </div>
+
+        <li class="example-element">
+          <a href="#"></a>
+        </li>
+      </div>
+
+      <div class="start">
+        <input class="artist-a" value="Prince">
+        <input class="artist-b" value="Madonna">
+        <button type="submit" id="submit">GO!</button>
+
+        <ul class="examples"></ul>
+      </div>
+    </div>
+
+    <div id="footer">
+      made by
     </div>
   </body>
 </html>
