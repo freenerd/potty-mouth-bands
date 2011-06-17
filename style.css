@@ -306,11 +306,13 @@ div.displays {
   padding-left: 140px;
 }
 
+div.winner {
+  height: 50px;
+}
 
-
-
-
-
+h2.winner {
+  display: none;
+}
 
 
 

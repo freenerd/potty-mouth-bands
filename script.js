@@ -109,6 +109,19 @@ var getSentiment = function(lyrics, resultSelector) {
           $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 500)
         });
       }
+
+      winner = output.reduce( function(previous, current, index, array) {
+        if (current[1] > previous[1]) {
+          return current;
+        } else {
+          return previous;
+        }
+      });
+
+      $("div.results h2.winner")
+        .text("Wow, " + $(".results ." + winner[0] + " .name").text() + " has a potty mouth!")
+        .delay(2000)
+        .fadeIn(2000);
     }
   );
 };
@@ -179,12 +192,12 @@ $(document).ready( function() {
 
     // Reset
     $("input.start").click( function() {
-      $('.inputs input.artist-a').val("")
-      $('.inputs input.artist-b').val("")
+      $('.inputs input.artist-a').val("");
+      $('.inputs input.artist-b').val("");
+      $("div.results .winner").text("").hide();
+      $("#submit").text("GO!");
 
       $('body').removeClass().addClass('start');
-
-       $("#submit").text("GO!");
     });
 
     // Examples
