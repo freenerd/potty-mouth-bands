@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <script src="vendor/jquery-1.6.1.min.js" type="text/javascript"></script>
+
+    <!--<script> if ( typeof window.JSON === 'undefined' ) { document.write('<script src="vendor/json2.js"><\/script>'); } </script>-->
+    <!--<script src="vendor/amplify.store.js"></script>-->
+    <!--<script src="vendor/history.adapter.jquery.js"></script>-->
+    <!--<script src="vendor/history.js"></script>-->
+    <!--<script src="vendor/history.html4.js"></script>-->
+
+    <script src="script.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+
+  <body class="start">
+    <div class="start">
+      <input class="artist-a" value="Prince">
+      <input class="artist-b" value="Madonna">
+      <input type="submit" id="submit">
+
+      <ul class="examples"></ul>
+    </div>
+
+    <div class="results">
+      <div class="displays"></div>
+      <input type="submit" class="start" value="Try another pair">
+    </div>
+
+    <div class="not-found">
+      <h3>Oh no, artist was not found</h3>
+      <input type="submit" class="start" value="Try another pair">
+    </div>
+
+    <div class="templates">
+      <div class="result">
+        <h1 class="name"></h1>
+        <div class="sentiment">
+          <label>Sentiment:</label>
+          <p></p>
+        </div>
+      </div>
+
+      <li class="example-element">
+        <a href="#"></a>
+      </li>
+    </div>
+  </body>
+</html>

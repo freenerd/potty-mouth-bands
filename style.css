@@ -1,0 +1,11 @@
+div.results, div.start, div.not-found, div.templates {
+  display: none;
+}
+
+body.start div.start, body.results div.results, body.not-found div.not-found{
+  display: block;
+}
+
+div.results .sentiment {
+  display: none
+}
