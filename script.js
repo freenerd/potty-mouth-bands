@@ -10,7 +10,6 @@ const DEFAULT_INPUTS = ["Justin Bieber", "Rebecca Black"];
 const EXAMPLES = [
         ["Hammerfall", "Metallica"],
         ["Britney Spears", "Lady Gaga"],
-        ["Prince", "Madonna"],
         ["Eminem", "50 Cent"],
         ["Snoop Dog", "2pac"],
         ["Neil Young", "Bob Dylan"]
@@ -106,7 +105,7 @@ var getSentiment = function(lyrics, resultSelector) {
         $('#submit').removeClass();
         $('body').removeClass().addClass('results');
         $.each(output, function(i, element) {
-          $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 500)
+          $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 1000)
         });
       }
 
