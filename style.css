@@ -186,7 +186,7 @@ h1 {
   font-size: 20px;
   line-height: 38px;
   width: 200px;
-  display: block;
+  display: inline-block;
   margin: 0 0 10px 0;
   padding: 0 5px;
 }
@@ -217,12 +217,19 @@ body.start div.start, body.results div.results, body.not-found div.not-found{
   display: block;
 }
 
-div.results .sentiment {
-  display: none
+div.bar-wrapper {
+  height: 0px;
 }
 
+div.bar {
+  background-color: red;
+}
 
-
+div.displays {
+  text-align: center;
+  height: 600px;
+  position: relative;
+}
 
 
 

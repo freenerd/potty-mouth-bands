@@ -104,9 +104,8 @@ var getSentiment = function(lyrics, resultSelector) {
 
       if ( output.length >= RESULT_SELECTORS.length ) {
         $.each(output, function(i, element) {
-          $(".results ." + element[0] + " .sentiment")
-            .find("p").text(element[1]).end()
-            .show();
+          $(".results ." + element[0] + " .bar")
+            .animate( { height: ((element[1] * 100).toString() + "px") }, 500)
         });
       }
     }
@@ -186,8 +185,8 @@ $(document).ready( function() {
     $.each(EXAMPLES, function(i, example) {
       $(".templates .example-element")
         .clone()
-        .find("a").text( example.join(" vs. ") ).end()
-        .click(function() { start( example ) } )
+        .find("a").text( example.join(" vs. ") )
+        .click(function() { start( example ) } ).end()
         .appendTo("div.start ul.examples");
     });
   }
