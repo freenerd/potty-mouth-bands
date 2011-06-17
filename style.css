@@ -264,6 +264,22 @@ h2 {
   color: #999;
 }
 
+#content .start .examples li a:hover {
+  color: #333;
+}
+
+
+#content .about {
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;
+  position: relative;
+  margin: 0 50px;
+  padding: 15px;
+  background: #FDFFD0;
+  border-radius: 10px;
+}
+
 #footer {
   padding: 10px;
   text-align: right;
