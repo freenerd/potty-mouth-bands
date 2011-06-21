@@ -8,9 +8,10 @@ const MAX_NUMBER_OF_TRACKS = 10;
 const RESULT_SELECTORS = ["artist-a", "artist-b"];
 const DEFAULT_INPUTS = ["Justin Bieber", "Rebecca Black"];
 const EXAMPLES = [
-        ["Hammerfall", "Metallica"],
         ["Britney Spears", "Lady Gaga"],
-        ["Eminem", "50 Cent"],
+        ["Vanilla Ice", "MC Hammer"],
+        ["Black Eyed Peas", "The White Stripes"],
+        ["John Lennon", "Paul McCartney"],
         ["Snoop Dog", "2pac"],
         ["Neil Young", "Bob Dylan"]
       ];
@@ -89,39 +90,43 @@ var getLyrics = function(trackId, resultSelector) {
 var getSentiment = function(lyrics, resultSelector) {
   lyrics = lyrics.filter( function(item) { return (item != '') } )
 
-  $.post("http://apib2.semetric.com/sentiment?token=" + musicMetricApiKey, 
-    { 'text[]' : lyrics },
-    function(data) {
-      averageSentiment = intArrayAverage(
-        data.response.map(
-          function(e) { return e.score } 
-        )
-      );
+  var outputSentiment = function(data) {
+    averageSentiment = intArrayAverage(
+      data.response.map(
+        function(e) { return e.score }
+      )
+    );
 
-      // Output
-      output.push([ resultSelector, averageSentiment ] );
+    // Output
+    output.push([ resultSelector, averageSentiment ] );
 
-      if ( output.length >= RESULT_SELECTORS.length ) {
-        $('#submit').removeClass();
-        $('body').removeClass().addClass('results');
-        $.each(output, function(i, element) {
-          $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 1000)
-        });
-      }
-
-      winner = output.reduce( function(previous, current, index, array) {
-        if (current[1] > previous[1]) {
-          return current;
-        } else {
-          return previous;
-        }
+    if ( output.length >= RESULT_SELECTORS.length ) {
+      $('#submit').removeClass();
+      $('body').removeClass().addClass('results');
+      $.each(output, function(i, element) {
+        $(".results ." + element[0] + " .bar").animate( { height: ((element[1] * 60).toString() + "px") }, 1000)
       });
-
-      $("div.results h2.winner")
-        .text("Wow, " + $(".results ." + winner[0] + " .name").text() + " has a potty mouth!")
-        .delay(1000)
-        .fadeIn(2000);
     }
+
+    winner = output.reduce( function(previous, current, index, array) {
+      if (current[1] > previous[1]) {
+        return current;
+      } else {
+        return previous;
+      }
+    });
+
+    $("div.results h2.winner")
+      .text("Wow, " + $(".results ." + winner[0] + " .name").text() + " has a potty mouth!")
+      .delay(1000)
+      .fadeIn(2000);
+  };
+
+  $.post(
+    "http://apib2.semetric.com/sentiment?token=" + musicMetricApiKey,
+    { 'text[]' : lyrics },
+    outputSentiment,
+    "json"
   );
 };
 
